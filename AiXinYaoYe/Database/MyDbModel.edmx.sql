@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 03/08/2018 14:36:55
+-- Date Created: 03/08/2018 15:26:26
 -- Generated from EDMX file: C:\Users\lulus\OneDrive\私活\爱心药业积分中心\AiXinYaoYe\Database\MyDbModel.edmx
 -- --------------------------------------------------
 
@@ -22,6 +22,12 @@ GO
 -- Dropping existing tables
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[BonusProducts]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[BonusProducts];
+GO
+IF OBJECT_ID(N'[dbo].[RecommandProducts]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[RecommandProducts];
+GO
 
 -- --------------------------------------------------
 -- Creating all tables
@@ -33,7 +39,8 @@ CREATE TABLE [dbo].[BonusProducts] (
     [Name] nvarchar(100)  NOT NULL,
     [Desc] nvarchar(max)  NOT NULL,
     [Bonus] decimal(18,0)  NOT NULL,
-    [DetailPics] nvarchar(max)  NOT NULL
+    [DetailPics] nvarchar(max)  NOT NULL,
+    [CoverImage] nvarchar(max)  NOT NULL
 );
 GO
 
@@ -43,7 +50,16 @@ CREATE TABLE [dbo].[RecommandProducts] (
     [Name] nvarchar(100)  NOT NULL,
     [Desc] nvarchar(max)  NOT NULL,
     [Price] decimal(18,0)  NOT NULL,
-    [DetailPics] nvarchar(max)  NOT NULL
+    [DetailPics] nvarchar(max)  NOT NULL,
+    [CoverImage] nvarchar(max)  NOT NULL
+);
+GO
+
+-- Creating table 'Admins'
+CREATE TABLE [dbo].[Admins] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [UserName] nvarchar(max)  NOT NULL,
+    [Password] nvarchar(max)  NOT NULL
 );
 GO
 
@@ -60,6 +76,12 @@ GO
 -- Creating primary key on [Id] in table 'RecommandProducts'
 ALTER TABLE [dbo].[RecommandProducts]
 ADD CONSTRAINT [PK_RecommandProducts]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'Admins'
+ALTER TABLE [dbo].[Admins]
+ADD CONSTRAINT [PK_Admins]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 

@@ -12,19 +12,10 @@ namespace AiXinYaoYe.Database
     using System;
     using System.Collections.Generic;
     
-    public partial class BonusProduct
+    public partial class Admin
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public BonusProduct()
-        {
-            this.Bonus = 0m;
-        }
-    
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string Desc { get; set; }
-        public decimal Bonus { get; set; }
-        public string DetailPics { get; set; }
-        public string CoverImage { get; set; }
+        public string UserName { get; set; }
+        public string Password { get; set; }
     }
 }

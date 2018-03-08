@@ -8,6 +8,7 @@
   <EntityContainer Name="MyModelStoreContainer">
     <EntitySet Name="BonusProducts" EntityType="MyModel.Store.BonusProducts" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="RecommandProducts" EntityType="MyModel.Store.RecommandProducts" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Admins" EntityType="MyModel.Store.Admins" store:Type="Tables" Schema="dbo" />
   </EntityContainer>
   <EntityType Name="BonusProducts">
     <Key>
@@ -18,6 +19,7 @@
     <Property Name="Desc" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Bonus" Type="decimal" Nullable="false" DefaultValue="0" />
     <Property Name="DetailPics" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CoverImage" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="RecommandProducts">
     <Key>
@@ -28,6 +30,15 @@
     <Property Name="Desc" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Price" Type="decimal" Nullable="false" DefaultValue="0" />
     <Property Name="DetailPics" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CoverImage" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Admins">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -36,6 +47,7 @@
         <EntityContainer Name="MyEntities" annotation:LazyLoadingEnabled="true" >
           <EntitySet Name="BonusProducts" EntityType="MyModel.BonusProduct" />
           <EntitySet Name="RecommandProducts" EntityType="MyModel.RecommandProduct" />
+          <EntitySet Name="Admins" EntityType="MyModel.Admin" />
         </EntityContainer>
         <EntityType Name="BonusProduct">
           <Key>
@@ -46,6 +58,7 @@
           <Property Name="Desc" Type="String" Nullable="false" />
           <Property Name="Bonus" Type="Decimal" Nullable="false" DefaultValue="0" />
           <Property Name="DetailPics" Type="String" Nullable="false" />
+          <Property Name="CoverImage" Type="String" Nullable="false" />
         </EntityType>
         <EntityType Name="RecommandProduct">
           <Key>
@@ -56,6 +69,15 @@
           <Property Name="Desc" Type="String" Nullable="false" />
           <Property Name="Price" Type="Decimal" Nullable="false" DefaultValue="0" />
           <Property Name="DetailPics" Type="String" Nullable="false" />
+          <Property Name="CoverImage" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" Nullable="false" />
+          <Property Name="Password" Type="String" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -71,6 +93,7 @@
           <ScalarProperty Name="Desc" ColumnName="Desc" />
           <ScalarProperty Name="Bonus" ColumnName="Bonus" />
           <ScalarProperty Name="DetailPics" ColumnName="DetailPics" />
+          <ScalarProperty Name="CoverImage" ColumnName="CoverImage" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -82,6 +105,16 @@
           <ScalarProperty Name="Desc" ColumnName="Desc" />
           <ScalarProperty Name="Price" ColumnName="Price" />
           <ScalarProperty Name="DetailPics" ColumnName="DetailPics" />
+          <ScalarProperty Name="CoverImage" ColumnName="CoverImage" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Admins">
+      <EntityTypeMapping TypeName="IsTypeOf(MyModel.Admin)">
+        <MappingFragment StoreEntitySet="Admins">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

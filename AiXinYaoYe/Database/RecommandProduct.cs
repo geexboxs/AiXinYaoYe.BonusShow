@@ -25,5 +25,6 @@ namespace AiXinYaoYe.Database
         public string Desc { get; set; }
         public decimal Price { get; set; }
         public string DetailPics { get; set; }
+        public string CoverImage { get; set; }
     }
 }

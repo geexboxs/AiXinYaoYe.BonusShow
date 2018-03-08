@@ -27,5 +27,6 @@ namespace AiXinYaoYe.Database
     
         public virtual DbSet<BonusProduct> BonusProducts { get; set; }
         public virtual DbSet<RecommandProduct> RecommandProducts { get; set; }
+        public virtual DbSet<Admin> Admins { get; set; }
     }
 }

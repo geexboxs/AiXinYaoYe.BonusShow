@@ -7,6 +7,7 @@
       <Diagram DiagramId="a162469e81db4dda8fec8d0a56d34d34" Name="Diagram1" >
         <EntityTypeShape EntityType="MyModel.BonusProduct" Width="1.5" PointX="4.5" PointY="3.125" />
         <EntityTypeShape EntityType="MyModel.RecommandProduct" Width="1.5" PointX="7" PointY="3.25" />
+        <EntityTypeShape EntityType="MyModel.Admin" Width="1.5" PointX="8.875" PointY="3.5" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
