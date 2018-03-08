@@ -114,6 +114,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\BonusProductController.cs" />
+    <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
+    <Compile Include="Areas\Admin\Controllers\RecommendProductController.cs" />
     <Compile Include="Controllers\BonusProductController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\RecommendProductController.cs" />
@@ -147,8 +150,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Admin\Views\Login\Login.js" />
     <Content Include="Content\css\amazeui.min.css" />
     <Content Include="Content\css\app.css" />
+    <Content Include="Content\image\favicon.png" />
     <Content Include="Content\js\amazeui.min.js" />
     <Content Include="Content\js\jquery.min.js" />
     <Content Include="Database\MyDbModel.Context.tt">
@@ -181,7 +186,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Controllers\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Models\" />
@@ -196,6 +200,13 @@
     <Content Include="Database\MyDbModel.edmx.diagram">
       <DependentUpon>MyDbModel.edmx</DependentUpon>
     </Content>
+    <Content Include="Areas\Admin\Views\Login\Login.cshtml" />
+    <Content Include="Areas\Admin\Views\BonusProduct\List.cshtml" />
+    <Content Include="Areas\Admin\Views\BonusProduct\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\BonusProduct\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\RecommendProduct\List.cshtml" />
+    <Content Include="Areas\Admin\Views\RecommendProduct\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\RecommendProduct\Edit.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\BonusProduct\List.cshtml" />
     <Content Include="Views\RecommendProduct\List.cshtml" />
