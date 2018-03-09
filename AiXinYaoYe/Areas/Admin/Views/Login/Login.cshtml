@@ -1,14 +1,6 @@
 ﻿<html>
 <head lang="en">
-    <meta charset="UTF-8">
-    <title>Login Page | Amaze UI Example</title>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="renderer" content="webkit">
-    <meta http-equiv="Cache-Control" content="no-siteapp">
-    <link rel="alternate icon" type="image/png" href="~/Content/image/favicon.png">
-    <link rel="stylesheet" href="~/Content/css/amazeui.min.css">
+
     <style>
         .header {
             text-align: center;
@@ -27,28 +19,28 @@
 </head>
 <body>
     <div class="header">
-        <div class="am-g">
+        <div class="g">
             <h1>爱心药业积分中心</h1>
             <p>管理后台</p>
         </div>
         <hr>
     </div>
-    <div class="am-g">
-        <div class="am-u-lg-6 am-u-md-8 am-u-sm-centered">
+    <div class="g">
+        <div class="u-lg-6 u-md-8 u-sm-centered">
             <h3>登录</h3>
             <hr>
             <br>
 
-            <form method="post" action="@Url.Action("LoginPost")" class="am-form">
+            <form method="post" action="@Url.Action("LoginPost")" class="form">
                 <label for="username">用户名:</label>
-                <input type="text" name="" id="username" value="" autocomplete="off">
+                <input type="text" name="username" id="username" value="" autocomplete="off">
                 <br>
                 <label for="password">密码:</label>
-                <input type="password" name="" id="password" value="" autocomplete="off" >
+                <input type="password" name="password" id="password" value="" autocomplete="off" >
 
                 <br>
-                <div class="am-cf">
-                    <input type="submit" name="" value="登 录" class="am-btn am-btn-primary am-btn-sm am-fl">
+                <div class="cf">
+                    <input type="submit" name="" value="登 录" class="btn btn-primary btn-sm fl">
                 </div>
             </form>
             <hr>
