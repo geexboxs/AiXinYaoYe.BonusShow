@@ -150,6 +150,7 @@
     <Content Include="Areas\Admin\Views\Login\Login.js" />
     <Content Include="Content\css\amazeui.min.css" />
     <Content Include="Content\css\app.css" />
+    <Content Include="Content\image\favicon.jpg" />
     <Content Include="Content\image\favicon.png" />
     <Content Include="Content\js\amazeui.min.js" />
     <Content Include="Content\js\jquery.min.js" />
