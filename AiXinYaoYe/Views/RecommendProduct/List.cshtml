@@ -1,15 +1,16 @@
-﻿<!DOCTYPE html>
+﻿@model List<AiXinYaoYe.Database.Entity.RecommandProduct>
+<!DOCTYPE html>
 <html lang="zh-CN">
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>积分兑换商城</title>
-    <link href="/Content/css/app.css" rel="stylesheet" media="all" />
-    <link href="/Content/css/amazeui.min.css" rel="stylesheet" media="all" />
-    <script type="text/javascript" src="/Content/js/jquery.min.js"></script>
-    <script type="text/javascript" src="/Content/js/amazeui.min.js"></script>
+    <title>新增商品列表</title>
+    <link href="~/Content/css/app.css" rel="stylesheet" media="all" />
+    <link href="~/Content/css/amazeui.min.css" rel="stylesheet" media="all" />
+    
+    <script type="text/javascript" src="~/Content/js/jquery.min.js"></script>
     <style>
         li {
             border: solid #e8e8e8 2px;
@@ -18,118 +19,24 @@
 </head>
 
 <body>
+<header style="display: block; background-color: rgba(253, 3, 5, 0.808);" class="bar bar-nav">
+    <h1 class="title">商品列表</h1>
+</header>
     <div id="content-wrap">
-        <div style="text-align: center;padding:5px;font-size:16px;font-weight: bold;"><span>积分兑换</span></div>
         <ul data-am-widget="gallery" class="am-gallery am-avg-sm-2 am-avg-md-3 am-avg-lg-4 am-gallery-default product"
-            data-am-gallery="{ pureview: true }">
-            <li>
-                <div class="am-gallery-item">
-                    <a href="" class="">
-                        <img src="http://www.17sucai.com/preview/155563/2016-08-24/%E6%B7%98%E5%AE%9D/images/t1.jpg" alt="" data-am-pureviewed="1">
-                        <h3 class="am-gallery-title">极米 (XGIMI) H1 智能 家用 投影机（3D 高清 无屏电视 京东微联APP控制）</h3>
-                        <div class="am-gallery-desc"><span class="price">￥4899.00</span></div>
-                    </a>
-                </div>
-            </li>
-            <li>
-                <div class="am-gallery-item">
-                    <a href="" class="">
-                        <img src="http://www.17sucai.com/preview/155563/2016-08-24/%E6%B7%98%E5%AE%9D/images/t2.jpg" alt="" data-am-pureviewed="1">
-                        <h3 class="am-gallery-title">金正（NINTAUS）养生壶 煎药壶 中药壶 高硼硅玻璃电热水壶304不锈钢发热盘 1818E</h3>
-                        <div class="am-gallery-desc"><span class="price">￥169.00</span></div>
-                    </a>
-                </div>
-            </li>
-            <li>
-                <div class="am-gallery-item">
-                    <a href="" class="">
-                        <img src="http://www.17sucai.com/preview/155563/2016-08-24/%E6%B7%98%E5%AE%9D/images/t3.jpg" alt="" data-am-pureviewed="1">
-                        <h3 class="am-gallery-title">【新品】拉卡拉双卡号手环 iPhone秒变双卡双待 出国随意接打无漫游 双享号苹果皮 双卡号-灰色</h3>
-                        <div class="am-gallery-desc"><span class="price">￥399.00</span></div>
-                    </a>
-                </div>
-            </li>
-            <li>
-                <div class="am-gallery-item">
-                    <a href="" class="">
-                        <img src="http://www.17sucai.com/preview/155563/2016-08-24/%E6%B7%98%E5%AE%9D/images/t4.jpg" alt="" data-am-pureviewed="1">
-                        <h3 class="am-gallery-title">【京东超市】蓝月亮 深层洁净洗衣液（薰衣草）1kg/瓶 （新老包装随机发货）</h3>
-                        <div class="am-gallery-desc"><span class="price">￥19.90</span></div>
-                    </a>
-                </div>
-            </li>
-            <li>
-                <div class="am-gallery-item">
-                    <a href="" class="">
-                        <img src="http://www.17sucai.com/preview/155563/2016-08-24/%E6%B7%98%E5%AE%9D/images/t1.jpg" alt="" data-am-pureviewed="1">
-                        <h3 class="am-gallery-title">极米 (XGIMI) H1 智能 家用 投影机（3D 高清 无屏电视 京东微联APP控制）</h3>
-                        <div class="am-gallery-desc"><span class="price">￥4899.00</span></div>
-                    </a>
-                </div>
-            </li>
-            <li>
-                <div class="am-gallery-item product">
-                    <a href="" class="">
-                        <img src="http://www.17sucai.com/preview/155563/2016-08-24/%E6%B7%98%E5%AE%9D/images/t2.jpg" alt="" data-am-pureviewed="1">
-                        <h3 class="am-gallery-title">金正（NINTAUS）养生壶 煎药壶 中药壶 高硼硅玻璃电热水壶304不锈钢发热盘 1818E</h3>
-                        <div class="am-gallery-desc"><span class="price">￥169.00</span></div>
-                    </a>
-                </div>
-            </li>
-            <li>
-                <div class="am-gallery-item">
-                    <a href="" class="">
-                        <img src="http://www.17sucai.com/preview/155563/2016-08-24/%E6%B7%98%E5%AE%9D/images/t3.jpg" alt="" data-am-pureviewed="1">
-                        <h3 class="am-gallery-title">【新品】拉卡拉双卡号手环 iPhone秒变双卡双待 出国随意接打无漫游 双享号苹果皮 双卡号-灰色</h3>
-                        <div class="am-gallery-desc"><span class="price">￥399.00</span></div>
-                    </a>
-                </div>
-            </li>
-            <li>
-                <div class="am-gallery-item">
-                    <a href="" class="">
-                        <img src="http://www.17sucai.com/preview/155563/2016-08-24/%E6%B7%98%E5%AE%9D/images/t4.jpg" alt="" data-am-pureviewed="1">
-                        <h3 class="am-gallery-title">【京东超市】蓝月亮 深层洁净洗衣液（薰衣草）1kg/瓶 （新老包装随机发货）</h3>
-                        <div class="am-gallery-desc"><span class="price">￥19.90</span></div>
-                    </a>
-                </div>
-            </li>
-            <li>
-                <div class="am-gallery-item">
-                    <a href="" class="">
-                        <img src="http://www.17sucai.com/preview/155563/2016-08-24/%E6%B7%98%E5%AE%9D/images/t1.jpg" alt="" data-am-pureviewed="1">
-                        <h3 class="am-gallery-title">极米 (XGIMI) H1 智能 家用 投影机（3D 高清 无屏电视 京东微联APP控制）</h3>
-                        <div class="am-gallery-desc"><span class="price">￥4899.00</span></div>
-                    </a>
-                </div>
-            </li>
-            <li>
-                <div class="am-gallery-item">
-                    <a href="" class="">
-                        <img src="http://www.17sucai.com/preview/155563/2016-08-24/%E6%B7%98%E5%AE%9D/images/t2.jpg" alt="" data-am-pureviewed="1">
-                        <h3 class="am-gallery-title">金正（NINTAUS）养生壶 煎药壶 中药壶 高硼硅玻璃电热水壶304不锈钢发热盘 1818E</h3>
-                        <div class="am-gallery-desc"><span class="price">￥169.00</span></div>
-                    </a>
-                </div>
-            </li>
-            <li>
-                <div class="am-gallery-item">
-                    <a href="" class="">
-                        <img src="http://www.17sucai.com/preview/155563/2016-08-24/%E6%B7%98%E5%AE%9D/images/t3.jpg" alt="" data-am-pureviewed="1">
-                        <h3 class="am-gallery-title">【新品】拉卡拉双卡号手环 iPhone秒变双卡双待 出国随意接打无漫游 双享号苹果皮 双卡号-灰色</h3>
-                        <div class="am-gallery-desc"><span class="price">￥399.00</span></div>
-                    </a>
-                </div>
-            </li>
-            <li>
-                <div class="am-gallery-item">
-                    <a href="" class="">
-                        <img src="http://www.17sucai.com/preview/155563/2016-08-24/%E6%B7%98%E5%AE%9D/images/t4.jpg" alt="" data-am-pureviewed="1">
-                        <h3 class="am-gallery-title">【京东超市】蓝月亮 深层洁净洗衣液（薰衣草）1kg/瓶 （新老包装随机发货）</h3>
-                        <div class="am-gallery-desc"><span class="price">￥19.90</span></div>
-                    </a>
-                </div>
-            </li>
+            data-am-gallery="{ pureview: true }" style="margin-top: 46px;">
+            @foreach (var item in Model)
+            {
+                <li style="padding:5px;">
+                    <div class="am-gallery-item">
+                        <a href="@Url.Action("Detail",new{id=item.Id})">
+                            <img src="@item.CoverImage" data-am-pureviewed="1" style="height: 50vw;">
+                            <h3 class="am-gallery-title">@item.Name</h3>
+                            <div class="am-gallery-desc"><span class="price">¥ @item.Price.ToString("0.00")</span></div>
+                        </a>
+                    </div>
+                </li>
+            }
         </ul>
     </div>
 </body>

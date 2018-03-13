@@ -1,0 +1,41 @@
+﻿@model AiXinYaoYe.Database.Entity.BonusProduct
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>积分商品详情</title>
+    <link href="~/Content/css/app.css" rel="stylesheet" media="all" />
+    <link href="~/Content/css/amazeui.min.css" rel="stylesheet" media="all" />
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+    <script type="text/javascript" src="~/Content/js/jquery.min.js"></script>
+</head>
+
+<body>
+    <header style="display: block; background-color: rgba(253, 3, 5, 0.808);" class="bar bar-nav">
+        <i class="fa fa-chevron-left" onclick="window.history.go(-1);" style="position: absolute; top: 50%; transform: translateY(-50%);z-index: 1000"></i>
+        <h1 class="title">商品详情</h1>
+    </header>
+    <div style="margin-top:46px;width: 100%;height:50%;">
+        <img src="@Model.CoverImage" style="max-height: 100%; max-width: 100%;min-width: 100%;">
+    </div>
+    <div style="width:100%;padding-left:10px;padding-right:10px; padding-top: 5px; padding-bottom: 5px;border-bottom:solid #e8e8e8 4px; border-top: solid #e8e8e8 1px;">
+        <h2 style="margin:0px;">@Model.Name</h2>
+    </div>
+    <div style="width:100%;padding-left:10px;padding-right:10px; padding-top: 5px;font-size:13px;">
+        <span>@Model.Desc</span>
+    </div>
+    <div style="width:100%;padding-left:10px;padding-right:10px;padding-top:7px;padding-bottom:7px;border-bottom:solid #e8e8e8 15px;">
+        <div class="am-gallery-desc"><span class="price"><i class="fa fa-product-hunt"></i> @Model.Bonus</span></div>
+    </div>
+    <div style="width:100%;padding:10px;border-left:solid red 5px;">
+        <h3 style="margin:0px;">商品详情</h3>
+    </div>
+    <div style="width:100%;">
+        <img src="@Model.DetailPics" style="max-width:100%;min-width:100%;">
+    </div>
+</body>
+
+</html>
