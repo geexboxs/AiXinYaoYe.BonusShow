@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -27,6 +28,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <TargetFrameworkProfile />
+    <TypeScriptToolsVersion>2.6</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -132,9 +134,12 @@
     <Compile Include="Areas\Admin\Controllers\BonusProductController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
     <Compile Include="Areas\Admin\Controllers\RecommendProductController.cs" />
+    <Compile Include="WeChat\WXConfig.cs" />
     <Compile Include="Controllers\BonusProductController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\RecommendProductController.cs" />
+    <Compile Include="Areas\Admin\Controllers\UploadController.cs" />
+    <Compile Include="Controllers\WeChatController.cs" />
     <Compile Include="Database\AiXinYaoYeDb.cs" />
     <Compile Include="Database\Entity\Admin.cs" />
     <Compile Include="Database\Entity\BonusProduct.cs" />
@@ -145,14 +150,30 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="WeChat\WXMolde.cs" />
+    <Compile Include="WeChat\WXUserInfoModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Admin\Views\Login\Login.js" />
     <Content Include="Content\css\amazeui.min.css" />
     <Content Include="Content\css\app.css" />
+    <Content Include="Content\image-compressor-master\.gitattributes" />
+    <Content Include="Content\image-compressor-master\.gitignore" />
+    <Content Include="Content\image-compressor-master\dist\image-compressor.common.js" />
+    <Content Include="Content\image-compressor-master\dist\image-compressor.esm.js" />
+    <Content Include="Content\image-compressor-master\dist\image-compressor.js" />
+    <Content Include="Content\image-compressor-master\dist\image-compressor.min.js" />
+    <Content Include="Content\image-compressor-master\docs\index.html" />
+    <Content Include="Content\image-compressor-master\docs\js\image-compressor.js" />
+    <Content Include="Content\image-compressor-master\docs\js\main.js" />
+    <Content Include="Content\image-compressor-master\rollup.config.js" />
+    <Content Include="Content\image-compressor-master\src\defaults.js" />
+    <Content Include="Content\image-compressor-master\src\index.js" />
+    <Content Include="Content\image-compressor-master\src\utils.js" />
     <Content Include="Content\image\beijing.png" />
     <Content Include="Content\image\favicon.jpg" />
     <Content Include="Content\image\favicon.png" />
+    <Content Include="Content\image\uploadImg.png" />
     <Content Include="Content\js\amazeui.min.js" />
     <Content Include="Content\js\jquery.min.js" />
     <Content Include="Database\MyDbModel.edmx.sql" />
@@ -178,7 +199,10 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Content\UploadImage\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Upload\" />
+    <Folder Include="Views\WeChat\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Admin\Views\web.config" />
@@ -195,21 +219,37 @@
     <Content Include="Areas\Admin\Views\RecommendProduct\Details.cshtml" />
     <Content Include="Areas\Admin\Views\RecommendProduct\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\RecommendProduct\Index.cshtml" />
+    <Content Include="Content\image-compressor-master\.babelrc" />
+    <Content Include="Content\image-compressor-master\.commitlintrc" />
+    <Content Include="Content\image-compressor-master\.editorconfig" />
+    <Content Include="Content\image-compressor-master\.eslintrc" />
+    <Content Include="Content\image-compressor-master\CHANGELOG.md" />
+    <Content Include="Content\image-compressor-master\LICENSE" />
+    <Content Include="Content\image-compressor-master\package-lock.json" />
+    <Content Include="Content\image-compressor-master\package.json" />
+    <Content Include="Content\image-compressor-master\README.md" />
     <None Include="packages.config" />
     <Content Include="Views\BonusProduct\List.cshtml" />
     <Content Include="Views\Profile\Index.cshtml" />
     <Content Include="Views\BonusProduct\Detail.cshtml" />
     <Content Include="Views\RecommendProduct\Detail.cshtml" />
     <Content Include="Views\RecommendProduct\List.cshtml" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <Content Include="Views\Profile\Connect.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Content\image-compressor-master\types\index.d.ts" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">

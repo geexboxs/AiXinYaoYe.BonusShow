@@ -37,7 +37,60 @@ namespace AiXinYaoYe.Database
                     connection.Close();
                 }
             }
-            
+        }
+
+        public static UserProfile GetUserProfileByHybh(string hybh)
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    SqlCommand cmd = new SqlCommand("select * from hygl where hybh=@hybh", connection);
+                    cmd.Parameters.AddWithValue("hybh", hybh);
+                    SqlDataReader sdr = cmd.ExecuteReader();
+                    sdr.Read();
+                    var result = new UserProfile();
+                    result.Name = sdr["hyxm"].ToString();
+                    result.CardNum = sdr["hybh"].ToString();
+                    result.Bonus = sdr["jf"].ToString();
+                    result.Balance = Convert.ToDecimal(sdr["czye"]);
+                    return result;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    return null;
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+
+        public static void AddOpenId(string hybh,string openId)
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    SqlCommand cmd = new SqlCommand("update hygl set openID = @openid where hybh = @hybh", connection);
+                    cmd.Parameters.AddWithValue("hybh", hybh);
+                    cmd.Parameters.AddWithValue("openid", openId);
+                    SqlDataReader sdr = cmd.ExecuteReader();
+                    sdr.Read();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
         }
     }
 

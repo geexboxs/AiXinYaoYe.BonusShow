@@ -87,7 +87,7 @@ desired effect
 
                 <!-- Sidebar Menu -->
                 <ul class="sidebar-menu tree" data-widget="tree">
-                    <li class="header">HEADER</li>
+                    <li class="header"></li>
                     <!-- Optionally, you can add icons to the links -->
                     <li class="@(this.ViewContext.Controller is BonusProductController?"active":"")"><a href="@Url.Action("Index","BonusProduct")"><i class="fa fa-product-hunt"></i> <span>积分商品</span></a></li>
                     <li class="@(this.ViewContext.Controller is RecommendProductController?"active":"")"><a href="@Url.Action("Index","RecommendProduct")"><i class="fa fa-fire"></i> <span>推荐商品</span></a></li>
@@ -121,7 +121,7 @@ desired effect
                 Anything you want
             </div>
             <!-- Default to the left -->
-            <strong>Copyright © 2016 <a href="#">Company</a>.</strong> All rights reserved.
+            <strong>© 2018 powered by <a href="https://github.com/microexs"><b>Microex</b></a>.</strong>
         </footer>
 
     </div>

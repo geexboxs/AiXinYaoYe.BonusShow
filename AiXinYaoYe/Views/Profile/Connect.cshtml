@@ -1,0 +1,58 @@
+﻿@model AiXinYaoYe.Database.UserProfile
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>关联会员卡</title>
+    <link href="~/Content/css/app.css" rel="stylesheet" media="all" />
+    <link href="~/Content/css/amazeui.min.css" rel="stylesheet" media="all" />
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+    <script type="text/javascript" src="~/Content/js/jquery.min.js"></script>
+    <style>
+        h3 {
+            margin: 28vh 0 0 0;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body style="background:#e8e8e8;">
+    <header style="display: block; background-color: rgba(253, 3, 5, 0.808);border:0;" class="bar bar-nav">
+        <h1 class="title">关联会员卡</h1>
+    </header>
+
+    <div style="margin-top:46px;background-color: #e8e8e8; width: 100%; height: 100%; text-align: center;">
+        <h3>请输入会员编号</h3>
+        <br/>
+        <input type="text" value="" style="height: 50px; border-radius: 5px; padding: 8px; width: 90%; border: 1px solid #a9a9a9;" id="memberNo"/>
+        <br/>
+        <button style="margin-top: 23px;border-radius: 5px; height: 40px; width: 100px; background-color: rgb(253, 3, 5); color: #fff;border:1px solid red" onclick="submit();">提 交</button>
+    </div>
+</body>
+<script type="text/javascript">
+    function submit() {
+        var number = $("#memberNo").val();
+        if (number == "" || number == null) {
+            alert("请输入会员编号");
+        } else {
+            $.ajax({
+                type: 'post',
+                url:'@Url.Action("Save","Profile")',
+                data: { "hybh": number },
+                success: function (res) {
+                    console.log(res);
+                    if (res.msg == "success") {
+                        alert("关联成功！");
+                        window.location.href='@Url.Action("Index","Profile")';
+                    } else {
+                        alert(res.msg);
+                    }
+                }
+            });
+        }
+    }
+</script>
+</html>
