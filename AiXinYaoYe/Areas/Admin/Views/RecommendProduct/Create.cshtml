@@ -45,7 +45,7 @@
                     <input type="file" id="coverInput" accept="image/jpeg,image/gif,image/jpg,image/png/">
                     <input id="CoverImage" name="CoverImage" type="text" value="">
                 </div>
-                <img src="~/Content/image/uploadImg.png" id="coverPic" style="border-radius: 6px; width: 180px; height: 180px;" onclick="$('#coverInput').click()" />
+                <img src="~/Content/image/uploadImg.png" id="coverPic" style="border-radius: 6px; max-width: 360px; max-height: 500px;" onclick="$('#coverInput').click()" />
             </div>
         </div>
 
@@ -56,7 +56,9 @@
                     <input type="file" id="detailInput" accept="image/jpeg,image/gif,image/jpg,image/png/">
                     <input id="DetailPics" name="DetailPics" type="text" value="">
                 </div>
-                <img src="~/Content/image/uploadImg.png" id="detalPic" style="border-radius: 6px; max-width: 360px; max-height: 40vh;" onclick="$('#detailInput').click()" />
+                <div style="max-height: 50vh;overflow-y: auto; ">
+                    <img src="~/Content/image/uploadImg.png" id="detalPic" style="border-radius: 6px; max-width: 360px;" onclick="$('#detailInput').click()" />
+                </div>
             </div>
         </div>
 
