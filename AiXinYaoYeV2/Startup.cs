@@ -66,7 +66,11 @@ namespace AiXinYaoYeV2
                     name: "areas",
                     template: "{area:exists}/{controller}/{action}/{id?}"
                 );
-                
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller}/{action}/{id?}"
+                );
+
             });
         }
     }

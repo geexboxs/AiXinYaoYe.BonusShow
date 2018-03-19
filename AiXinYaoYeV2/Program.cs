@@ -20,8 +20,6 @@ namespace AiXinYaoYeV2
         public static IWebHost BuildWebHost(string[] args)
         {
             return WebHost.CreateDefaultBuilder(args)
-                .UseKestrel()
-                .UseIISIntegration()
                 .UseSetting(WebHostDefaults.DetailedErrorsKey, "true")
                 .UseSetting(WebHostDefaults.CaptureStartupErrorsKey, "true")
                 .UseStartup<Startup>()
