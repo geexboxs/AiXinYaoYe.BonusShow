@@ -45,7 +45,7 @@
                     <input type="file" id="coverInput" accept="image/jpeg,image/gif,image/jpg,image/png/">
                     <input id="CoverImage" name="CoverImage" type="text" value="">
                 </div>
-                <img src="~/Content/image/uploadImg.png" id="coverPic" style="border-radius: 6px; max-width: 360px; max-height: 500px;" onclick="$('#coverInput').click()" />
+                <img src="~/image/uploadImg.png" id="coverPic" style="border-radius: 6px; max-width: 360px; max-height: 500px;" onclick="$('#coverInput').click()" />
             </div>
         </div>
 
@@ -57,7 +57,7 @@
                     <input id="DetailPics" name="DetailPics" type="text" value="">
                 </div>
                 <div style="max-height: 50vh;overflow-y: auto; ">
-                    <img src="~/Content/image/uploadImg.png" id="detalPic" style="border-radius: 6px; max-width: 360px;" onclick="$('#detailInput').click()" />
+                    <img src="~/image/uploadImg.png" id="detalPic" style="border-radius: 6px; max-width: 360px;" onclick="$('#detailInput').click()" />
                 </div>
             </div>
         </div>
@@ -74,7 +74,7 @@
     @Html.ActionLink("<< 返回列表", "Index")
 </div>
 @section script{
-    <script type="text/javascript" src="~/Content/image-compressor-master/dist/image-compressor.min.js"></script>
+    <script type="text/javascript" src="~/lib/image-compressor-master/dist/image-compressor.min.js"></script>
     <script type="text/javascript">
         $("#coverInput").change(function () {
             var file = document.getElementById("coverInput").files[0];
