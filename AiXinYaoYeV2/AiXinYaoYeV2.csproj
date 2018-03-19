@@ -26,4 +26,37 @@
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\css\amazeui.min.css" />
+    <None Include="wwwroot\css\app.css" />
+    <None Include="wwwroot\image\beijing.png" />
+    <None Include="wwwroot\image\favicon.jpg" />
+    <None Include="wwwroot\image\favicon.png" />
+    <None Include="wwwroot\image\QQ图片20180314115808.png" />
+    <None Include="wwwroot\image\uploadImg.png" />
+    <None Include="wwwroot\js\amazeui.min.js" />
+    <None Include="wwwroot\js\jquery.min.js" />
+    <None Include="wwwroot\lib\image-compressor-master\.babelrc" />
+    <None Include="wwwroot\lib\image-compressor-master\.commitlintrc" />
+    <None Include="wwwroot\lib\image-compressor-master\.editorconfig" />
+    <None Include="wwwroot\lib\image-compressor-master\.eslintrc" />
+    <None Include="wwwroot\lib\image-compressor-master\.gitattributes" />
+    <None Include="wwwroot\lib\image-compressor-master\.gitignore" />
+    <None Include="wwwroot\lib\image-compressor-master\CHANGELOG.md" />
+    <None Include="wwwroot\lib\image-compressor-master\dist\image-compressor.common.js" />
+    <None Include="wwwroot\lib\image-compressor-master\dist\image-compressor.esm.js" />
+    <None Include="wwwroot\lib\image-compressor-master\dist\image-compressor.js" />
+    <None Include="wwwroot\lib\image-compressor-master\dist\image-compressor.min.js" />
+    <None Include="wwwroot\lib\image-compressor-master\docs\index.html" />
+    <None Include="wwwroot\lib\image-compressor-master\docs\js\image-compressor.js" />
+    <None Include="wwwroot\lib\image-compressor-master\docs\js\main.js" />
+    <None Include="wwwroot\lib\image-compressor-master\LICENSE" />
+    <None Include="wwwroot\lib\image-compressor-master\README.md" />
+    <None Include="wwwroot\lib\image-compressor-master\rollup.config.js" />
+    <None Include="wwwroot\lib\image-compressor-master\src\defaults.js" />
+    <None Include="wwwroot\lib\image-compressor-master\src\index.js" />
+    <None Include="wwwroot\lib\image-compressor-master\src\utils.js" />
+    <None Include="wwwroot\lib\image-compressor-master\types\index.d.ts" />
+  </ItemGroup>
+
 </Project>
