@@ -15,11 +15,13 @@ namespace AiXinYaoYeV2.Controllers
     {
         private readonly WXConfig _wxConfig;
         private ILogger _logger;
+        private readonly AiXinYaoYeDb _aiXinYaoYeDb;
 
-        public ProfileController(WXConfig wxConfig, ILogger<ProfileController> logger)
+        public ProfileController(WXConfig wxConfig, ILogger<ProfileController> logger,AiXinYaoYeDb aiXinYaoYeDb)
         {
             _wxConfig = wxConfig;
             _logger = logger;
+            _aiXinYaoYeDb = aiXinYaoYeDb;
         }
         public IActionResult Index(params string[] @params)
         {
@@ -52,14 +54,14 @@ namespace AiXinYaoYeV2.Controllers
             var msg = "error";
             try
             {
-                var userInfo = AiXinYaoYeDb.GetUserProfileByHybh(hybh);
+                var userInfo = _aiXinYaoYeDb.GetUserProfileByHybh(hybh);
                 if (userInfo == null)
                 {
                     msg = "会员编号错误，请重新输入";
                 }
                 else
                 {
-                    AiXinYaoYeDb.AddOpenId(hybh, HttpContext.Session.GetString("openid"));
+                    _aiXinYaoYeDb.AddOpenId(hybh, HttpContext.Session.GetString("openid"));
                     msg = "success";
                 }
             }

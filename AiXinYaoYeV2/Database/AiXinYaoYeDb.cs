@@ -5,8 +5,12 @@ namespace AiXinYaoYeV2.Database
 {
     public class AiXinYaoYeDb
     {
-        private static string _connectionString = "Data Source=server.microex.cn;Initial Catalog=tglszbzy;Integrated Security=False;User ID=sa;Password=lulus@aliyun123;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-        public static UserProfile GetUserProfile(string openId)
+        public AiXinYaoYeDb(string connection)
+        {
+            _connectionString = connection;
+        }
+        private string _connectionString;
+        public UserProfile GetUserProfile(string openId)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
@@ -36,7 +40,7 @@ namespace AiXinYaoYeV2.Database
             }
         }
 
-        public static UserProfile GetUserProfileByHybh(string hybh)
+        public UserProfile GetUserProfileByHybh(string hybh)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
@@ -66,7 +70,7 @@ namespace AiXinYaoYeV2.Database
             }
         }
 
-        public static void AddOpenId(string hybh,string openId)
+        public void AddOpenId(string hybh,string openId)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {

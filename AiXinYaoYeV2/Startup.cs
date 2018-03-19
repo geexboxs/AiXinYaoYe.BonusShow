@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using AiXinYaoYeV2.Database;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authorization.Infrastructure;
@@ -44,9 +45,10 @@ namespace AiXinYaoYeV2
             services.AddDbContext<Database.MyDbContext>(options =>
                 {
                     options.UseSqlServer(
-                        "data source=server.microex.cn;initial catalog=aixinyaoye.bonusshow;user id=sa;password=lulus@aliyun123;MultipleActiveResultSets=True;App=EntityFramework");
+                        Configuration.GetConnectionString("MyDbContext"));
                 });
             services.AddSingleton<WXConfig>();
+            services.AddScoped<AiXinYaoYeDb>((_) => new AiXinYaoYeDb(Configuration.GetConnectionString("AiXinYaoYeDb")));
             services.AddSession();
             
         }
