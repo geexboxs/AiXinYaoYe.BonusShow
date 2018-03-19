@@ -1,8 +1,10 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Security.Claims;
 using System.Web;
 using AiXinYaoYeV2.Database;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -27,8 +29,16 @@ namespace AiXinYaoYeV2.Areas.Admin.Controllers
         {
             if (this.dbContext.Admins.Any(x=>x.UserName == username && x.Password == password))
             {
-                var authContext = Request.HttpContext.AuthenticateAsync().Result;
-                Request.HttpContext.SignInAsync(authContext.Principal);
+                var claimsPrincipal = new ClaimsPrincipal(new ClaimsIdentity(new[]
+                {
+                    new Claim(ClaimTypes.NameIdentifier, "admin"),
+                }, CookieAuthenticationDefaults.AuthenticationScheme));
+                Request.HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,claimsPrincipal,new AuthenticationProperties()
+                {
+                    ExpiresUtc = DateTimeOffset.UtcNow.AddDays(7),
+                    IsPersistent = true,
+                    IssuedUtc = DateTimeOffset.UtcNow,
+                });
                 return RedirectToAction("Index", "BonusProduct");
             }
 

@@ -20,7 +20,7 @@ namespace AiXinYaoYeV2.Database
                     var result = new UserProfile();
                     result.Name = sdr["hyxm"].ToString();
                     result.CardNum = sdr["hybh"].ToString();
-                    result.Bonus = sdr["jf"].ToString();
+                    result.Bonus = Convert.ToDecimal(sdr["jf"].ToString());
                     result.Balance = Convert.ToDecimal(sdr["czye"]);
                     return result;
                 }
@@ -50,7 +50,7 @@ namespace AiXinYaoYeV2.Database
                     var result = new UserProfile();
                     result.Name = sdr["hyxm"].ToString();
                     result.CardNum = sdr["hybh"].ToString();
-                    result.Bonus = sdr["jf"].ToString();
+                    result.Bonus = Convert.ToDecimal(sdr["jf"].ToString());
                     result.Balance = Convert.ToDecimal(sdr["czye"]);
                     return result;
                 }
@@ -95,7 +95,7 @@ namespace AiXinYaoYeV2.Database
     {
         public string Name { get; set; }
         public string CardNum { get; set; }
-        public string Bonus { get; set; }
+        public decimal Bonus { get; set; }
         public decimal Balance { get; set; }
     }
 }

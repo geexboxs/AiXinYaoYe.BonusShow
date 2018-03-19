@@ -21,7 +21,7 @@ namespace AiXinYaoYeV2.Controllers
             _wxConfig = wxConfig;
             _logger = logger;
         }
-        public ActionResult Index(params string[] @params)
+        public IActionResult Index(params string[] @params)
         {
             if (string.IsNullOrEmpty(HttpContext.Session.GetString("openid")))
             {
@@ -34,15 +34,15 @@ namespace AiXinYaoYeV2.Controllers
             //{
             //    return RedirectToAction("Connect");
             //}
-            return View();
+            return View(new UserProfile(){Balance = 100,Bonus = 101,CardNum = "12312312312",Name = "hehe"});
         }
 
-        public ActionResult Connect()
+        public IActionResult Connect()
         {
             return View();
         }
 
-        public ActionResult Save(string hybh)
+        public IActionResult Save(string hybh)
         {
             if (string.IsNullOrEmpty(HttpContext.Session.GetString("openid")))
             {

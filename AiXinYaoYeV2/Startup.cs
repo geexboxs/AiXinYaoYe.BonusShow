@@ -2,7 +2,11 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authorization.Infrastructure;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -26,6 +30,9 @@ namespace AiXinYaoYeV2
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAuthorization(options => { options.DefaultPolicy = new AuthorizationPolicy(new List<IAuthorizationRequirement>(){new ClaimsAuthorizationRequirement(ClaimTypes.NameIdentifier,new List<string>(){"admin"})},new List<string>(){ CookieAuthenticationDefaults.AuthenticationScheme } ); });
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(options => { options.LoginPath = "/admin/login/login"; });
             services.AddLogging(options =>
             {
                 options.AddEventLog();

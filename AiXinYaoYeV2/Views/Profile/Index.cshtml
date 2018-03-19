@@ -1,6 +1,4 @@
-﻿@using AiXinYaoYeV2.Database
-@using Microsoft.AspNetCore.Http
-@model AiXinYaoYeV2.Database.UserProfile
+﻿@model AiXinYaoYeV2.Database.UserProfile
 <!DOCTYPE html>
 <html lang="zh-CN">
 
@@ -28,14 +26,10 @@
     <header style="display: block; background-color: rgba(253, 3, 5, 0.808);border:0;" class="bar bar-nav">
         <h1 class="title">个人中心</h1>
     </header>
-<div>
-    <div style="height:32%;margin:67px 20px 15px 20px;background-image:url(@Url.Content("~/image/beijing.png"));background-size:100% 100%;border-radius:7px;">
-        <img src="@Url.Content("~/image/favicon.jpg")" style="width:80px;height:80px;border-radius:60px;padding:20px 0 0 20px;">
-        <span style="color:#fff;font-size:20px;width:200px;height:40px;margin:10px;">爱心药业</span>
-        <span style="position:absolute;top:28%;left:40px;font-size:18px;transform:translateY(-50%);">18911223344</span>
-    </div>
-    @if (!string.IsNullOrEmpty(Context.Session.GetString("openid")))
-    {
+        <div style="height:32%;margin:67px 20px 15px 20px;background-image:url('/image/beijing.png');background-size:100% 100%;border-radius:7px;">
+            <img src="~/image/favicon.jpg" style="width:80px;height:80px;border-radius:60px;padding:20px 0 0 20px;">
+            <span style="color:#fff;font-size:20px;width:200px;height:40px;margin:10px;">爱心药业</span>
+            <span style="position:absolute;top:28%;left:40px;font-size:18px;transform:translateY(-50%);">18911223344</span>
         <div style="margin:0;line-height:40px;">
             <table style="text-align:center;width:100%;padding:10px;background:#e8e8e8">
                 <tr style="width:100%;line-height:30px;font-size:13px;">
@@ -43,7 +37,7 @@
                     <td style="width:50%;">储值余额</td>
                 </tr>
                 <tr style="width:100%;line-height:40px;font-size:22px;">
-                    <td style="width:50%;color:	rgb(253,3,5);">@Model.Bonus</td>
+                    <td style="width:50%;color:	rgb(253,3,5);">@Model.Bonus.ToString("0.00")</td>
                     <td style="width:50%;color:	rgb(253,3,5);">@Model.Balance.ToString("0.00")</td>
                 </tr>
             </table>
@@ -54,34 +48,14 @@
         <div style="margin:8px 5px 0px 5px;line-height:40px;border-radius:10px;">
             <p style="margin-left:10px;display:inline;"><i class="fa fa-id-card" style="color:#1E90FF;"></i> 会员编号：</p><p style="display:inline;">@Model.CardNum</p>
         </div>
-    }
-@if (!string.IsNullOrEmpty(Context.Session.GetString("openid")))
-{
-    <a href="@Url.Action("Connect","Profile")">绑定我的会员卡</a>
-}
 
-    
-</div>
-    
+    </div>
+
     <div style="margin:8px 5px 0px 5px;line-height:40px;border-radius:10px;">
         <p style="margin-left:10px;"><i class="fa fa-qrcode" style="color:#228B22;"></i>&nbsp;&nbsp;公众号</p>
     </div>
     <script>
-    $(document).ready(function(){
-        $.ajax({
-            type: 'get',
-            url:'@Url.Action("GetAuthorizeUrl","WeChat")',
-            data: { "hybh": number },
-            success: function (res) {
-                console.log(res);
-                if (res.msg == "success") {
-                    window.location.href = data +"#wechat_redirect";
-                } else {
-                    alert(res.msg);
-                }
-            }
-        });
-    });
+
     </script>
 </body>
 
