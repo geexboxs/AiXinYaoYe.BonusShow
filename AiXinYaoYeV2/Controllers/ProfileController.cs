@@ -34,7 +34,7 @@ namespace AiXinYaoYeV2.Controllers
             {
                 RedirectToAction("Connect");
             }
-
+            _logger.LogError(123, HttpContext.Session.GetString("openid") +" : "+userInfo.ToJson());
             //var userProfile = AiXinYaoYeDb.GetUserProfile(HttpContext.Session.GetString("openid"));
             //if (userProfile == null)
             //{
