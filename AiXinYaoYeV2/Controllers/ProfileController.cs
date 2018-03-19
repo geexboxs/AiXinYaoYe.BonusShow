@@ -29,14 +29,18 @@ namespace AiXinYaoYeV2.Controllers
             {
                 GetOpenId();
             }
-            this._logger.LogWarning(1111, HttpContext.Session.GetString("openid"));
+            var userInfo = _aiXinYaoYeDb.GetUserProfile(HttpContext.Session.GetString("openid"));
+            if (userInfo == null)
+            {
+                RedirectToAction("Connect");
+            }
 
             //var userProfile = AiXinYaoYeDb.GetUserProfile(HttpContext.Session.GetString("openid"));
             //if (userProfile == null)
             //{
             //    return RedirectToAction("Connect");
             //}
-            return View(new UserProfile(){Balance = 100,Bonus = 101,CardNum = "12312312312",Name = "hehe"});
+            return View(userInfo);
         }
 
         public IActionResult Connect()
