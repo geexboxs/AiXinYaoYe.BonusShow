@@ -1,0 +1,55 @@
+﻿<html>
+<head lang="en">
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        .header {
+            text-align: center;
+        }
+
+            .header h1 {
+                font-size: 200%;
+                color: #333;
+                margin-top: 30px;
+            }
+
+            .header p {
+                font-size: 14px;
+            }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="g">
+            <h1>爱心药业积分中心</h1>
+            <p>管理后台</p>
+        </div>
+        <hr>
+    </div>
+    <div class="g">
+        <div class="u-lg-6 u-md-8 u-sm-centered">
+            <h3>登录</h3>
+            <hr>
+            <br>
+
+            <form method="post" action="@Url.Action("LoginPost")" class="form">
+                <label for="username">用户名:</label>
+                <input type="text" name="username" id="username" value="" autocomplete="off">
+                <br>
+                <label for="password">密码:</label>
+                <input type="password" name="password" id="password" value="" autocomplete="off">
+
+                <br>
+                <div class="cf">
+                    <input type="submit" name="" value="登 录" class="btn btn-primary btn-sm fl">
+                </div>
+            </form>
+            <hr>
+            <p>© 2018 powered by <a href="https://github.com/microexs"><b>Microex</b></a>.</p>
+        </div>
+    </div>
+
+
+</body>
+</html>

@@ -104,7 +104,7 @@ namespace AiXinYaoYeV2.Controllers
                         _wxConfig.AccessToken = tokenResult.access_token;
                         tokenResult = OAuthApi.GetAccessToken(WXConfig.APPID, WXConfig.APPSECRET, _wxConfig.AccessToken, code);
                     }
-                    this._logger.LogWarning(2333,"fuck", tokenResult.ToJson());
+                    this._logger.LogWarning(2444,"fuck", tokenResult.ToJson());
                     HttpContext.Session.SetString("openid",tokenResult.openid);
                     //WXMolde data = new WXMolde();
                     //data.SetValue("appid",WXConfig.APPID);
