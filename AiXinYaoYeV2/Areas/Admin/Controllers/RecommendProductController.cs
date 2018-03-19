@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AiXinYaoYeV2.Areas.Admin.Controllers
 {
+    [Authorize]
     [Area("Admin")]
     public class RecommendProductController : Controller
     {

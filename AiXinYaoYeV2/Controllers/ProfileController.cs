@@ -4,6 +4,7 @@ using AiXinYaoYeV2.Database;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Senparc.Weixin.Helpers.Extensions;
 using Senparc.Weixin.MP.AdvancedAPIs;
@@ -13,34 +14,43 @@ namespace AiXinYaoYeV2.Controllers
 {
     public class ProfileController : Controller
     {
-        private readonly WXConfig _wxConfig;
         private ILogger _logger;
         private readonly AiXinYaoYeDb _aiXinYaoYeDb;
+        private IConfiguration _config;
 
-        public ProfileController(WXConfig wxConfig, ILogger<ProfileController> logger,AiXinYaoYeDb aiXinYaoYeDb)
+        public ProfileController( ILogger<ProfileController> logger,AiXinYaoYeDb aiXinYaoYeDb, IConfiguration config)
         {
-            _wxConfig = wxConfig;
             _logger = logger;
             _aiXinYaoYeDb = aiXinYaoYeDb;
+            _config = config;
         }
-        public IActionResult Index(params string[] @params)
+        [HttpGet]
+        public ActionResult GetUserProfile()
         {
+            this._logger.LogError(123, HttpContext.Session.GetString("openid"));
+            var userInfo = _aiXinYaoYeDb.GetUserProfile(HttpContext.Session.GetString("openid"));
+
+            if (userInfo == null)
+            {
+                return Json(new {success = false});
+            }
+
+            return Json(new{success=true, userInfo });
+        }
+
+        public IActionResult Index()
+        {
+            this._logger.LogError(123, _config["WxConfig:AppId"]+ ":" + _config["WxConfig:AppSecret"]);
             if (string.IsNullOrEmpty(HttpContext.Session.GetString("openid")))
             {
                 GetOpenId();
             }
-            var userInfo = _aiXinYaoYeDb.GetUserProfile(HttpContext.Session.GetString("openid"));
-            if (userInfo == null)
-            {
-                RedirectToAction("Connect");
-            }
-            _logger.LogError(123, HttpContext.Session.GetString("openid") +" : "+userInfo.ToJson());
             //var userProfile = AiXinYaoYeDb.GetUserProfile(HttpContext.Session.GetString("openid"));
             //if (userProfile == null)
             //{
             //    return RedirectToAction("Connect");
             //}
-            return View(userInfo);
+            return View();
         }
 
         public IActionResult Connect()
@@ -71,8 +81,7 @@ namespace AiXinYaoYeV2.Controllers
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
-                throw;
+                this._logger.LogError(123, e, e.Message);
             }
 
             return Json(new {msg});
@@ -83,7 +92,8 @@ namespace AiXinYaoYeV2.Controllers
             if (string.IsNullOrEmpty(Request.Query["code"]))
             {
                 string redirect_uri = Request.GetEncodedUrl();
-                var authorizeUrl = OAuthApi.GetAuthorizeUrl(WXConfig.APPID, redirect_uri,"state",OAuthScope.snsapi_userinfo);
+                var authorizeUrl = OAuthApi.GetAuthorizeUrl(_config["WxConfig:AppId"], redirect_uri,"state",OAuthScope.snsapi_base);
+                this._logger.LogError(123, "authorizeUrl:" + authorizeUrl);
                 //WXMolde data = new WXMolde();
                 //data.SetValue("appid", WXConfig.APPID);
                 //data.SetValue("redirect_uri", redirect_uri);
@@ -98,11 +108,9 @@ namespace AiXinYaoYeV2.Controllers
                 string code = Request.Query["code"];
                 try
                 {
-                    var tokenResult = OAuthApi.GetAccessToken(WXConfig.APPID, WXConfig.APPSECRET, code);
-                    if (string.IsNullOrEmpty(tokenResult.access_token))
-                    {
-                        tokenResult = OAuthApi.GetAccessToken(WXConfig.APPID, WXConfig.APPSECRET, code);
-                    }
+                    this._logger.LogError(123, "code:" + code);
+                    var tokenResult = OAuthApi.GetAccessToken(_config["WxConfig:AppId"], _config["WxConfig:AppSecret"], code);
+                    this._logger.LogError(123, "authorizeUrl:" + tokenResult);
                     HttpContext.Session.SetString("openid",tokenResult.openid);
                     //WXMolde data = new WXMolde();
                     //data.SetValue("appid",WXConfig.APPID);
@@ -122,7 +130,7 @@ namespace AiXinYaoYeV2.Controllers
                 }
                 catch (Exception e)
                 {
-                    this._logger.LogError(2333,e, e.Message);
+                    this._logger.LogError(123, e, e.Message);
                 }
             }
         }

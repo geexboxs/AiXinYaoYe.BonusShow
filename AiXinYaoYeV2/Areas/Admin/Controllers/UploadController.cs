@@ -1,10 +1,12 @@
 ﻿using System;
 using System.IO;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AiXinYaoYeV2.Areas.Admin.Controllers
 {
+    [Authorize]
     [Area("Admin")]
     public class UploadController : Controller
     {

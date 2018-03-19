@@ -47,8 +47,7 @@ namespace AiXinYaoYeV2
                     options.UseSqlServer(
                         Configuration.GetConnectionString("MyDbContext"));
                 });
-            services.AddSingleton<WXConfig>();
-            services.AddScoped<AiXinYaoYeDb>((_) => new AiXinYaoYeDb(Configuration.GetConnectionString("AiXinYaoYeDb")));
+            services.AddSingleton<AiXinYaoYeDb>((_) => new AiXinYaoYeDb(Configuration.GetConnectionString("AiXinYaoYeDb"),new EventLogLogger("AiXinYaoYeDb")));
             services.AddSession();
             
         }

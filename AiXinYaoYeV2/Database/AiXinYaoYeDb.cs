@@ -1,15 +1,19 @@
 ﻿using System;
 using System.Data.SqlClient;
+using Microsoft.Extensions.Logging;
 
 namespace AiXinYaoYeV2.Database
 {
     public class AiXinYaoYeDb
     {
-        public AiXinYaoYeDb(string connection)
+        public AiXinYaoYeDb(string connection, ILogger logger)
         {
             _connectionString = connection;
+            _logger = logger;
         }
         private string _connectionString;
+        private ILogger _logger;
+
         public UserProfile GetUserProfile(string openId)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
@@ -24,13 +28,13 @@ namespace AiXinYaoYeV2.Database
                     var result = new UserProfile();
                     result.Name = sdr["hyxm"].ToString();
                     result.CardNum = sdr["hybh"].ToString();
-                    result.Bonus = Convert.ToDecimal(sdr["jf"].ToString());
-                    result.Balance = Convert.ToDecimal(sdr["czye"]);
+                    result.Bonus = (Convert.ToDouble(sdr["jf"])).ToString("F2");
+                    result.Balance = (Convert.ToDouble(sdr["czye"])).ToString("F2");
                     return result;
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine(e);
+                    this._logger.LogError(123, e, e.Message);
                     return null;
                 }
                 finally
@@ -54,13 +58,13 @@ namespace AiXinYaoYeV2.Database
                     var result = new UserProfile();
                     result.Name = sdr["hyxm"].ToString();
                     result.CardNum = sdr["hybh"].ToString();
-                    result.Bonus = Convert.ToDecimal(sdr["jf"].ToString());
-                    result.Balance = Convert.ToDecimal(sdr["czye"]);
+                    result.Bonus = (Convert.ToDouble(sdr["jf"])).ToString("F2");
+                    result.Balance = (Convert.ToDouble(sdr["czye"])).ToString("F2");
                     return result;
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine(e);
+                    this._logger.LogError(123, e, e.Message);
                     return null;
                 }
                 finally
@@ -85,7 +89,7 @@ namespace AiXinYaoYeV2.Database
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine(e);
+                    this._logger.LogError(123, e, e.Message);
                 }
                 finally
                 {
@@ -99,7 +103,7 @@ namespace AiXinYaoYeV2.Database
     {
         public string Name { get; set; }
         public string CardNum { get; set; }
-        public decimal Bonus { get; set; }
-        public decimal Balance { get; set; }
+        public string Bonus { get; set; }
+        public string Balance { get; set; }
     }
 }
