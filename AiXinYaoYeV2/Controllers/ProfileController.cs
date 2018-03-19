@@ -21,7 +21,7 @@ namespace AiXinYaoYeV2.Controllers
             _wxConfig = wxConfig;
             _logger = logger;
         }
-        public ActionResult Index()
+        public ActionResult Index(params string[] @params)
         {
             if (string.IsNullOrEmpty(HttpContext.Session.GetString("openid")))
             {
