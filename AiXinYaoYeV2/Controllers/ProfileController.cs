@@ -27,6 +27,8 @@ namespace AiXinYaoYeV2.Controllers
             {
                 GetOpenId();
             }
+            this._logger.LogWarning(1111, HttpContext.Session.GetString("openid"));
+
             //var userProfile = AiXinYaoYeDb.GetUserProfile(HttpContext.Session.GetString("openid"));
             //if (userProfile == null)
             //{
@@ -75,7 +77,7 @@ namespace AiXinYaoYeV2.Controllers
             if (string.IsNullOrEmpty(Request.Query["code"]))
             {
                 string redirect_uri = Request.GetEncodedUrl();
-                var authorizeUrl = OAuthApi.GetAuthorizeUrl(WXConfig.APPID, redirect_uri,"state",OAuthScope.snsapi_base);
+                var authorizeUrl = OAuthApi.GetAuthorizeUrl(WXConfig.APPID, redirect_uri,"state",OAuthScope.snsapi_userinfo);
                 //WXMolde data = new WXMolde();
                 //data.SetValue("appid", WXConfig.APPID);
                 //data.SetValue("redirect_uri", redirect_uri);
@@ -83,28 +85,18 @@ namespace AiXinYaoYeV2.Controllers
                 //data.SetValue("scope", "snsapi_userinfo");
                 //data.SetValue("state", "STATE" + "#wechat_redirect");
                 //string url = "https://open.weixin.qq.com/connect/oauth2/authorize?" + data.ToUrl();
-                try
-                {
-                    Response.Redirect(authorizeUrl);
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e);
-                    throw;
-                }
+                Response.Redirect(authorizeUrl);
             }
             else
             {
                 string code = Request.Query["code"];
                 try
                 {
-                    var tokenResult = OAuthApi.GetAccessToken(WXConfig.APPID, WXConfig.APPSECRET, _wxConfig.AccessToken, code);
-                    if (string.IsNullOrEmpty(tokenResult.openid))
+                    var tokenResult = OAuthApi.GetAccessToken(WXConfig.APPID, WXConfig.APPSECRET, code);
+                    if (string.IsNullOrEmpty(tokenResult.access_token))
                     {
-                        _wxConfig.AccessToken = tokenResult.access_token;
-                        tokenResult = OAuthApi.GetAccessToken(WXConfig.APPID, WXConfig.APPSECRET, _wxConfig.AccessToken, code);
+                        tokenResult = OAuthApi.GetAccessToken(WXConfig.APPID, WXConfig.APPSECRET, code);
                     }
-                    this._logger.LogWarning(2444,"fuck", tokenResult.ToJson());
                     HttpContext.Session.SetString("openid",tokenResult.openid);
                     //WXMolde data = new WXMolde();
                     //data.SetValue("appid",WXConfig.APPID);
@@ -124,8 +116,7 @@ namespace AiXinYaoYeV2.Controllers
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine(e);
-                    throw;
+                    this._logger.LogError(2333,e, e.Message);
                 }
             }
         }
