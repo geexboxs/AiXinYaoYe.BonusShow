@@ -9,7 +9,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace AiXinYaoYeV2.Areas.Admin.Controllers
 {
     [AllowAnonymous]
-    public class LoginController:Controller
+    [Area("Admin")]
+    public class LoginController: Controller
     {
         private MyDbContext dbContext;
 

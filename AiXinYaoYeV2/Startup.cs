@@ -63,13 +63,10 @@ namespace AiXinYaoYeV2
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
-                    name: "default",
-                    template: "{controller}/{action}/{id?}"
-                );
-                routes.MapRoute(
                     name: "areas",
                     template: "{area:exists}/{controller}/{action}/{id?}"
                 );
+                
             });
         }
     }

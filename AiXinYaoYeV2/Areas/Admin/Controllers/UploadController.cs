@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AiXinYaoYeV2.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class UploadController : Controller
     {
         private IHostingEnvironment _hostingEnvironment;
