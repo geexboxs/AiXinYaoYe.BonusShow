@@ -3,20 +3,22 @@ using System.Net;
 using AiXinYaoYeV2.Database;
 using AiXinYaoYeV2.Database.Entity;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace AiXinYaoYeV2.Areas.Admin.Controllers
 {
-    [Authorize]
     [Area("Admin")]
     public class BonusProductController : Controller
     {
         private MyDbContext db;
+        private IHostingEnvironment _hostingEnvironment;
 
-        public BonusProductController(MyDbContext db)
+        public BonusProductController(MyDbContext db, IHostingEnvironment hostingEnvironment)
         {
             this.db = db;
+            this._hostingEnvironment = hostingEnvironment;
         }
 
         // GET: Admin/BonusProduct
@@ -115,8 +117,14 @@ namespace AiXinYaoYeV2.Areas.Admin.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             BonusProduct bonusProduct = db.BonusProducts.Find(id);
+            var coverUrl = bonusProduct.CoverImage;
+            var coverPath = _hostingEnvironment.WebRootPath + coverUrl.Replace("/", "\\");
+            var detailUrl = bonusProduct.CoverImage;
+            var detailPath = _hostingEnvironment.WebRootPath + detailUrl.Replace("/", "\\");
             db.BonusProducts.Remove(bonusProduct);
             db.SaveChanges();
+            System.IO.File.Delete(coverPath);
+            System.IO.File.Delete(detailPath);
             return RedirectToAction("Index");
         }
 

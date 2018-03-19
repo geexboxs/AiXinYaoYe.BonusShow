@@ -3,20 +3,22 @@ using System.Net;
 using AiXinYaoYeV2.Database;
 using AiXinYaoYeV2.Database.Entity;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace AiXinYaoYeV2.Areas.Admin.Controllers
 {
-    [Authorize]
     [Area("Admin")]
     public class RecommendProductController : Controller
     {
         private MyDbContext db;
+        private IHostingEnvironment _hostingEnvironment;
 
-        public RecommendProductController(MyDbContext db)
+        public RecommendProductController(MyDbContext db,IHostingEnvironment hostingEnvironment)
         {
             this.db = db;
+            this._hostingEnvironment = hostingEnvironment;
         }
 
         // GET: Admin/RecommendProduct
@@ -115,8 +117,14 @@ namespace AiXinYaoYeV2.Areas.Admin.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             RecommandProduct recommandProduct = db.RecommandProducts.Find(id);
+            var coverUrl = recommandProduct.CoverImage;
+            var coverPath = _hostingEnvironment.WebRootPath + coverUrl.Replace("/", "\\");
+            var detailUrl = recommandProduct.DetailPics;
+            var detailPath = _hostingEnvironment.WebRootPath + detailUrl.Replace("/", "\\");
             db.RecommandProducts.Remove(recommandProduct);
             db.SaveChanges();
+            System.IO.File.Delete(coverPath);
+            System.IO.File.Delete(detailPath);
             return RedirectToAction("Index");
         }
 

@@ -18,7 +18,7 @@ namespace AiXinYaoYeV2.Areas.Admin.Controllers
         public ActionResult Upload()
         {
             var file = HttpContext.Request.Form.Files[0];
-            var path = Path.Combine(_hostingEnvironment.WebRootPath, "/Content/UploadImage/Sample.PNG");
+            var path = Path.Combine(_hostingEnvironment.WebRootPath, "Content\\UploadImage\\");
             var res = "";
             var url = "";
             try

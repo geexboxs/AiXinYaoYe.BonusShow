@@ -5,7 +5,7 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>商品详情</h2>
+<h2>新品详情</h2>
 
 <div>
     <hr />
@@ -53,6 +53,7 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("编辑", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("<< 返回列表", "Index")
+    @Html.ActionLink("<< 返回列表", "Index")&nbsp;&nbsp;|&nbsp;
+    @Html.ActionLink("编辑", "Edit", new { id = Model.Id })
+
 </p>

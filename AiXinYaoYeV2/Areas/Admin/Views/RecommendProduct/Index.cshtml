@@ -6,7 +6,7 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>推荐商品</h2>
+<h2>新品列表</h2>
 
 <p>
     @Html.ActionLink("新增", "Create")
@@ -23,10 +23,10 @@
             @Html.DisplayNameFor(model => model.Price)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DetailPics)
+            @Html.DisplayNameFor(model => model.CoverImage)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CoverImage)
+            @Html.DisplayNameFor(model => model.DetailPics)
         </th>
         <th style="width: 140px;">操作</th>
     </tr>
@@ -43,11 +43,12 @@
             @Html.DisplayFor(modelItem => item.Price)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.DetailPics)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.CoverImage)
         </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DetailPics)
+        </td>
+        
         <td>
             @Html.ActionLink("编辑", "Edit", new { id=item.Id }) |
             @Html.ActionLink("详情", "Details", new { id=item.Id }) |

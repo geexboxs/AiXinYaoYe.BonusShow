@@ -5,7 +5,7 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>编辑商品</h2>
+<h2>编辑新品</h2>
 
 @using (Html.BeginForm())
 {
@@ -44,7 +44,7 @@
             @Html.LabelFor(model => model.CoverImage, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div style="display: none;">
-                    <input type="file" id="coverInput" accept="image/jpeg,image/gif,image/jpg,image/png/">
+                    <input type="file" id="coverInput" accept="image/jpeg,image/gif,image/jpg,image/png">
                     <input id="CoverImage" name="CoverImage" type="text" value="@Model.CoverImage">
                 </div>
                 <img src="@Model.CoverImage" id="coverPic" style="border-radius: 6px; max-width: 360px; max-height: 500px;" onclick="$('#coverInput').click()" />
@@ -55,7 +55,7 @@
             @Html.LabelFor(model => model.DetailPics, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div style="display: none;">
-                    <input type="file" id="detailInput" accept="image/jpeg,image/gif,image/jpg,image/png/">
+                    <input type="file" id="detailInput" accept="image/jpeg,image/gif,image/jpg,image/png">
                     <input id="DetailPics" name="DetailPics" type="text" value="@Model.DetailPics">
                 </div>
                 <div style="max-height: 50vh;overflow-y: auto; ">
