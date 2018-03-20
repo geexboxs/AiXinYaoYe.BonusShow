@@ -31,7 +31,6 @@
   <ItemGroup>
     <None Include="wwwroot\css\amazeui.min.css" />
     <None Include="wwwroot\css\app.css" />
-    <None Include="wwwroot\image\beijing.png" />
     <None Include="wwwroot\image\favicon.jpg" />
     <None Include="wwwroot\image\favicon.png" />
     <None Include="wwwroot\image\QQ图片20180314115808.png" />

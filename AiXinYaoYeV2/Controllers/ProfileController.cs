@@ -38,6 +38,11 @@ namespace AiXinYaoYeV2.Controllers
             return Json(new{success=true, userInfo });
         }
 
+        public ActionResult QrCode()
+        {
+            return View();
+        }
+
         public IActionResult Index()
         {
             this._logger.LogError(123, _config["WxConfig:AppId"]+ ":" + _config["WxConfig:AppSecret"]);
